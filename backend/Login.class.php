@@ -48,5 +48,5 @@
             $_SESSION['user_id'] = $info[0]['id'];
             return true;
         }
-
     }
+?>
