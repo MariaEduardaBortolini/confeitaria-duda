@@ -116,5 +116,26 @@
             if ($result) return $result[0];
         }
 
+        public function validar($email){
+
+            $pdo = $this->connect();
+            $sql = 'SELECT *
+                    FROM cadastro
+                    WHERE email = :email';
+            
+            $resultado = $pdo->prepare($sql);
+            $resultado->bindValue(':email', $email);
+            $resultado->execute();
+
+            $pdo = $this->disconnect();
+
+            if($resultado->rowCount() >= 1){
+                return false;
+            }else{
+                return true;
+            }
+
+            
+        } 
     }
 ?>
